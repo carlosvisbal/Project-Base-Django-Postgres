@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:13.11-alpine3.18
+    environment:
+      POSTGRES_USER: tu_usuario
+      POSTGRES_PASSWORD: tu_contraseña
+      POSTGRES_DB: tu_basededatos
+      TZ: America/Bogota
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    #  
+
+  django:
+    build:
+      context: .
+      args:
+        UID: "1000"
+    command: python manage.py runserver 0.0.0.0:9000
+    restart: always
+    tty: true
+    volumes:
+      - .:/app
+    ports:
+      - 9000:9000
+    depends_on:
+      - db
+    environment:
+      - DJANGO_ENV=dev
+    # networks:
+    #   default:
+    #     ipv4_address: 172.40.0.2
+
+volumes:
+  db_data:
+
+
+
