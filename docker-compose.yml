@@ -10,7 +10,8 @@ services:
       TZ: America/Bogota
     volumes:
       - db_data:/var/lib/postgresql/data
-    #  
+    ports:
+      - 192.168.1.9:5432:5432  # Utiliza una dirección IP válida y disponible en tu red
 
   django:
     build:
