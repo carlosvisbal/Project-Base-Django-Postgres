@@ -15,7 +15,7 @@
                 ],
                 "projectType": "django",
             },
-            // "serverReadyAction":{}
+            "serverReadyAction":{}
         },
         
     ]

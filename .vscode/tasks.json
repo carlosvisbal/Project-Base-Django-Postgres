@@ -17,31 +17,27 @@
 			}
 		},
 		{
-			"type": "docker-run",
+			"type": "shell",
 			"label": "docker-run: debug",
+			"command": "docker-compose",
+			"args": [
+				"-f",
+				"${workspaceFolder}/docker-compose.yml",
+				"up"
+			],
 			"dependsOn": [
 				"docker-build"
 			],
-			//
-			"dockerRun": {
-				"volumes": [
-					{"containerPath": "/app", "localPath": "${workspaceFolder}"}
-				],
-				//
-				"ports": [
-					{"containerPort": 9000, "hostPort": 9000}
-				]
+			"group": {
+				"kind": "build",
+				"isDefault": true
 			},
-			"python": {
-				"args": [
-					"runserver",
-					"0.0.0.0:9000",
-					//"--nothreading",
-					"--noreload"
-				],
-				"file": "manage.py"
+			"presentation": {
+				"reveal": "always"
 			}
-		},
+		}
+		
+		
 		
 	]
 }
