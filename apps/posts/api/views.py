@@ -2,11 +2,14 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import ViewSet, ModelViewSet
 from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from apps.posts.api.permissions import IsAdminOrReadOnly
 
 from apps.posts.models import Post
 from apps.posts.api.serializers import PostSerializer
 
 class PostModelViewset(ModelViewSet):
+    permission_classes = [IsAdminOrReadOnly]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     http_method_names = ['get', 'post', 'put']
