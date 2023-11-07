@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'apps.users',
     'apps.posts',
 ]
 
@@ -87,7 +88,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'tu_basededatos',
+        'NAME': 'tu_basededatos1',
         'USER': 'tu_usuario',
         'PASSWORD': 'tu_contraseña',
         'HOST': 'db',
@@ -148,3 +149,5 @@ MEDIA_ROOT = BASE_DIR / "media_root"
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'users.User'

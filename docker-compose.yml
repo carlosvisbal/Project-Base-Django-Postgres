@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: tu_usuario
       POSTGRES_PASSWORD: tu_contraseña
-      POSTGRES_DB: tu_basededatos
+      POSTGRES_DB: tu_basededatos1
       TZ: America/Bogota
     volumes:
       - db_data:/var/lib/postgresql/data
